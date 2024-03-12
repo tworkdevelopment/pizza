@@ -1,0 +1,21 @@
+<div class="product">
+  <!--<div class="product" *isChicken="product.description">-->
+
+  <ng-template [ngIf]="product.image">
+    <div class="product-image">
+      <img alt="Product pizza" src="{{product.image}}">
+    </div>
+  </ng-template>
+
+  <custom-title [title]="product.title | uppercase"></custom-title>
+
+<!--  <div class="product-description">{{product.description | chickenDescription}}  </div>-->
+  <div class="product-description">{{product.description | wordUppre: ['сыр', 'томат', 'сос']}}  </div>
+  <div class="product-action" #elem>
+<!--    <button class="btn btn-add-to-cart" (click)="addProductToCard()">В корзину</button>-->
+    <a class="btn btn-add-to-cart" routerLink="/order" [queryParams]="{product: product.title}">В корзину</a>
+    <a class="btn btn-white" [routerLink]="['/products', product.id]">Подробнее</a>
+  </div>
+<!--  <div>{{cartProductService.getCommonCount()}}</div>-->
+</div>
+<!--(click)="addToCart(product, orderElement)"-->
